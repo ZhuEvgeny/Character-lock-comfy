@@ -1,4 +1,6 @@
 ﻿work/
+demo/_slides/
 *.mp4
+!demo/demo.mp4
 __pycache__/
 .DS_Store
