@@ -26,3 +26,4 @@ Freelance lookdev needs a locked character, not prompt roulette. This public Com
 - [ ] Record and commit `demo/demo.mp4` (≤2 min)
 - [ ] Fill the official submission form with this repo URL
 
+
