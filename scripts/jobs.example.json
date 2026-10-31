@@ -1,0 +1,24 @@
+[
+  {
+    "prompt": "{CHAR}, heather-gray t-shirt, medium close-up, standing against a red brick wall, daylight, realistic photograph",
+    "seed": 42,
+    "w": 640,
+    "h": 640,
+    "prefix": "character_lock_dir_a",
+    "ref": "input_ref.png",
+    "weight": 0.85,
+    "end_at": 0.75,
+    "steps": 4
+  },
+  {
+    "prompt": "{CHAR}, navy hoodie, sitting at a wooden kitchen table with a ceramic coffee mug, morning window light, realistic photograph",
+    "seed": 43,
+    "w": 640,
+    "h": 640,
+    "prefix": "character_lock_dir_b",
+    "ref": "input_ref.png",
+    "weight": 0.85,
+    "end_at": 0.75,
+    "steps": 4
+  }
+]
