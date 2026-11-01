@@ -1,11 +1,13 @@
-﻿# Optional thin app layer
+# App
 
-The core deliverable for this entry is the ComfyUI workflow under `../workflows/`.
+Character Lock ships as the ComfyUI workflow in [`../workflows/character_lock_v1.json`](../workflows/character_lock_v1.json). This folder is a note for a later interface. There is no UI code here yet.
 
-If you add a UI later:
+A local UI can call ComfyUI's HTTP API:
 
-- Call ComfyUI via its HTTP API (`/prompt`, `/history`, `/view`)
-- Expose: upload ref → run lock workflow → show up to 2 outputs
-- Keep model weights local; do not hard-code closed partner APIs if targeting **Open Weights Only**
+- `POST /prompt` queues the graph
+- `GET /history/{prompt_id}` waits for the image
+- `GET /view` returns the saved file
 
-For tonight's deadline, a clear workflow + README + demo video is enough to submit; this folder can stay documentation-only.
+Three actions are enough: upload a reference, run the lock, show up to two saved directions. Keep the model weights on the machine that runs ComfyUI so the entry stays **Open Weights Only**.
+
+[`../scripts/gen.py`](../scripts/gen.py) is the command-line way to queue the graph today. Setup steps are in the [README](../README.md).

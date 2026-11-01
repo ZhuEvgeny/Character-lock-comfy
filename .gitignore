@@ -1,6 +1,14 @@
-﻿work/
+work/
 demo/_slides/
 *.mp4
 !demo/demo.mp4
 __pycache__/
 .DS_Store
+
+# Weights stay on the machine that runs ComfyUI
+*.safetensors
+*.gguf
+*.pt
+*.ckpt
+*.onnx
+*.bin

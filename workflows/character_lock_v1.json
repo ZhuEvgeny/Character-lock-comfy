@@ -1,5 +1,5 @@
 {
-  "id": "flux-schnell-pulid-zhen",
+  "id": "character-lock-v1",
   "revision": 0,
   "last_node_id": 17,
   "last_link_id": 16,
@@ -34,7 +34,8 @@
       },
       "widgets_values": [
         "flux1-schnell-Q4_K_S.gguf"
-      ]
+      ],
+      "title": "Flux Schnell GGUF"
     },
     {
       "id": 2,
@@ -69,7 +70,8 @@
         "clip_l.safetensors",
         "t5xxl_fp8_e4m3fn.safetensors",
         "flux"
-      ]
+      ],
+      "title": "Flux CLIP"
     },
     {
       "id": 3,
@@ -101,7 +103,8 @@
       },
       "widgets_values": [
         "ae.safetensors"
-      ]
+      ],
+      "title": "Flux VAE"
     },
     {
       "id": 4,
@@ -135,7 +138,8 @@
         640,
         640,
         1
-      ]
+      ],
+      "title": "640 canvas"
     },
     {
       "id": 5,
@@ -146,7 +150,7 @@
       ],
       "size": [
         420,
-        120
+        160
       ],
       "flags": {},
       "order": 5,
@@ -156,14 +160,6 @@
           "name": "clip",
           "type": "CLIP",
           "link": 1
-        },
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 3,
-          "widget": {
-            "name": "text"
-          }
         }
       ],
       "outputs": [
@@ -180,8 +176,9 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        ""
-      ]
+        "portrait of an East Asian woman, soft studio light, clean background, sharp detail"
+      ],
+      "title": "Positive prompt"
     },
     {
       "id": 6,
@@ -219,7 +216,8 @@
       },
       "widgets_values": [
         ""
-      ]
+      ],
+      "title": "Negative prompt"
     },
     {
       "id": 7,
@@ -257,7 +255,8 @@
       },
       "widgets_values": [
         3.5
-      ]
+      ],
+      "title": "Guidance"
     },
     {
       "id": 8,
@@ -316,7 +315,8 @@
         "euler",
         "simple",
         1.0
-      ]
+      ],
+      "title": "Sample"
     },
     {
       "id": 9,
@@ -357,7 +357,8 @@
       "properties": {
         "Node name for S&R": "VAEDecode"
       },
-      "widgets_values": []
+      "widgets_values": [],
+      "title": "Decode"
     },
     {
       "id": 10,
@@ -385,8 +386,9 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "flux_pulid"
-      ]
+        "character_lock"
+      ],
+      "title": "Save"
     },
     {
       "id": 11,
@@ -396,8 +398,8 @@
         520
       ],
       "size": [
-        520,
-        280
+        560,
+        420
       ],
       "flags": {},
       "order": 16,
@@ -408,48 +410,9 @@
         "Node name for S&R": "Note"
       },
       "widgets_values": [
-        "【Flux Schnell + PuLID 换脸】\nInstantID / IP-Adapter FaceID 不支持 Flux；Flux 用 PuLID。\n\n用法：\n1) LoadImage 放清晰正脸参考图\n2) 中文提示写在「中文提示→英文」\n3) weight 0.7–1.0；6GB 建议 640×640、FaceNet=CPU\n4) 需模型：models/pulid/pulid_flux_v0.9.1.safetensors\n   + EVA02_CLIP_L_336_psz14_s6B.pt（models/clip/）\n5) 重启 ComfyUI 后 Load 本工作流\n\n若 OOM：降到 512、weight 降到 0.7、end_at=0.6，并保持 --lowvram"
-      ]
-    },
-    {
-      "id": 12,
-      "type": "ZhEnPromptTranslate",
-      "pos": [
-        480,
-        20
+        "Character Lock — one reference face, one image per queue.\n\n1. Load Image: use a clear front-facing face. Copy examples/input_ref.png into ComfyUI/input/ and select input_ref.png.\n2. Positive prompt: edit it for the scene. Queue once for direction A. Change the prompt and the seed, then queue again for direction B. Keep at most two directions.\n3. PuLID: weight 0.85, start_at 0.0, end_at 0.75.\n4. 6GB GPU: stay at 640×640, set FaceNet to CPU, and start ComfyUI with --lowvram.\n5. If you run out of memory: 512×512, weight 0.7, end_at 0.6.\n\nModels (see README for links):\nmodels/unet/flux1-schnell-Q4_K_S.gguf\nmodels/clip/clip_l.safetensors\nmodels/clip/t5xxl_fp8_e4m3fn.safetensors\nmodels/clip/EVA02_CLIP_L_336_psz14_s6B.pt\nmodels/vae/ae.safetensors\nmodels/pulid/pulid_flux_v0.9.1.safetensors\n\nIdentity uses PuLID for Flux and FaceNet. This graph has no ControlNet."
       ],
-      "size": [
-        420,
-        200
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "english",
-          "type": "STRING",
-          "links": [
-            3
-          ],
-          "slot_index": 0
-        },
-        {
-          "name": "original",
-          "type": "STRING",
-          "links": null,
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ZhEnPromptTranslate"
-      },
-      "widgets_values": [
-        "一位亚洲女性肖像，柔和棚拍光，干净背景，细节清晰",
-        true,
-        false
-      ]
+      "title": "How to use"
     },
     {
       "id": 13,
@@ -481,7 +444,8 @@
       },
       "widgets_values": [
         "pulid_flux_v0.9.1.safetensors"
-      ]
+      ],
+      "title": "PuLID model"
     },
     {
       "id": 14,
@@ -511,7 +475,8 @@
       "properties": {
         "Node name for S&R": "PulidFluxEvaClipLoader"
       },
-      "widgets_values": []
+      "widgets_values": [],
+      "title": "EVA-CLIP"
     },
     {
       "id": 15,
@@ -543,7 +508,8 @@
       },
       "widgets_values": [
         "CPU"
-      ]
+      ],
+      "title": "FaceNet (CPU)"
     },
     {
       "id": 16,
@@ -580,9 +546,10 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "example.png",
+        "input_ref.png",
         "image"
-      ]
+      ],
+      "title": "Reference face"
     },
     {
       "id": 17,
@@ -652,7 +619,8 @@
         0.85,
         0.0,
         0.75
-      ]
+      ],
+      "title": "Apply PuLID"
     }
   ],
   "links": [
@@ -671,14 +639,6 @@
       6,
       0,
       "CLIP"
-    ],
-    [
-      3,
-      12,
-      0,
-      5,
-      1,
-      "STRING"
     ],
     [
       4,
